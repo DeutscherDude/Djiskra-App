@@ -1,9 +1,9 @@
 import React from "react";
 
-const mindMap = () => {
+const MindMap = () => {
     return ( 
         <div>Mind Map placeholder</div>
     );
 }
  
-export default mindMap;
+export default MindMap;

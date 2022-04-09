@@ -67,7 +67,7 @@ describe('Todos API', () => {
 
 describe('Views Rendering', () => {
     it('Route "/" --> returns Home.jsx', () => {
-
+        return 
     })
 
     it('Route "/todos" --> returns Todos.jsx', () => {

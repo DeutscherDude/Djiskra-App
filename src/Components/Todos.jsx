@@ -1,9 +1,9 @@
 import React from "react";
 
-const toDos = () => {
+const ToDos = () => {
     return ( 
         <div>To Do List placeholder</div>
     );
 }
  
-export default toDos;
+export default ToDos;
