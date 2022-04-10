@@ -1,3 +1,9 @@
+import React from 'react';
+import {render} from '@testing-library/react';
+import Home from './src/Components/Home';
+import MindMap from './src/Components/MindMap';
+import ToDos from './src/Components/Todos';
+
 const request = require('supertest');
 const app = require('./app');
 
@@ -65,20 +71,29 @@ describe('Todos API', () => {
     })
 })
 
+// To add more in-depth component tests
+
 describe('Views Rendering', () => {
     it('Route "/" --> returns Home.jsx', () => {
-        return 
+        const HomeComponent = render.create(<Home />).toJSON();
+        expect(HomeComponent).toMatchSnapshot();
     })
 
     it('Route "/todos" --> returns Todos.jsx', () => {
-            
+        const TodosComponent = render.create(<Todos />).toJSON();
+        expect(TodosComponent).toMatchSnapshot();
     })
 
     it('Route "/todos/:id" --> returns Todos.jsx with loaded API data', () => {
-
+        const TodosComponent = render.create(<Todos />).toJSON();
+        expect(TodosComponent).toMatchSnapshot();
     })
 
     it('Route "/mindmap" --> returns MindMap.jsx', () => {
-
+        const MindMapComponent = render.create(<MindMap />).toJSON();
+        expect(MindMapComponent).toMatchSnapshot();
     })
 })
+
+// To add snapshot tests for components
+
