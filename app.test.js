@@ -1,10 +1,11 @@
 import React from 'react';
-import {render} from '@testing-library/react';
-import Home from './src/Components/Home';
-import MindMap from './src/Components/MindMap';
-import ToDos from './src/Components/Todos';
+import ReactDOM from 'react-dom';
 
 const request = require('supertest');
+const MindMap = require('./src/Components/MindMap');
+const ToDos = require('./src/Components/Todos');
+const Home = require('./src/Components/Home');
+const create = require('@testing-library/react').render;
 const app = require('./app');
 
 describe('Todos API', () => {
@@ -74,10 +75,6 @@ describe('Todos API', () => {
 // To add more in-depth component tests
 
 describe('Views Rendering', () => {
-    it('Route "/" --> returns Home.jsx', () => {
-        const HomeComponent = render.create(<Home />).toJSON();
-        expect(HomeComponent).toMatchSnapshot();
-    })
 
     it('Route "/todos" --> returns Todos.jsx', () => {
         const TodosComponent = render.create(<Todos />).toJSON();
