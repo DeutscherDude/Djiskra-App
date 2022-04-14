@@ -8,6 +8,9 @@ const Home = require('./src/Components/Home');
 const create = require('@testing-library/react').render;
 const app = require('./app');
 
+// Restructure to test app.js setup
+
+
 describe('Todos API', () => {
     it('GET /todos --> array todos', () => {
         return request(app)
@@ -71,26 +74,3 @@ describe('Todos API', () => {
         .expect(422)
     })
 })
-
-// To add more in-depth component tests
-
-describe('Views Rendering', () => {
-
-    it('Route "/todos" --> returns Todos.jsx', () => {
-        const TodosComponent = render.create(<Todos />).toJSON();
-        expect(TodosComponent).toMatchSnapshot();
-    })
-
-    it('Route "/todos/:id" --> returns Todos.jsx with loaded API data', () => {
-        const TodosComponent = render.create(<Todos />).toJSON();
-        expect(TodosComponent).toMatchSnapshot();
-    })
-
-    it('Route "/mindmap" --> returns MindMap.jsx', () => {
-        const MindMapComponent = render.create(<MindMap />).toJSON();
-        expect(MindMapComponent).toMatchSnapshot();
-    })
-})
-
-// To add snapshot tests for components
-
