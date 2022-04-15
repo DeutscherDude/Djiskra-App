@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/todos.css';
 
 const ToDos = () => {
     return ( 

@@ -1,17 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 import { Helmet } from "react-helmet";
-import { useEffect } from "react";
+import '../css/home.css';
 
 
-const Home = () => {
-
-    return ( 
-        <div>Hello Mom!
-        <Helmet>
-            <title>Home</title>
-        </Helmet>
-        </div>
-    );
+class Home extends Component{
+    render(){
+        return ( 
+            <div>Hello Mom!
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
+            <div className="centered_button"></div>
+            </div>
+        );
+    }
 }
  
 export default Home;

@@ -6,6 +6,12 @@
     "start": "http-server",
     "test": "jest --watchAll --env=jsdom"
   },
+  "jest": {
+    "rootDir": "./src",
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -33,6 +39,7 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "html-webpack-plugin": "^5.5.0",
     "http-server": "^14.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
     "supertest": "^6.2.2",
     "webpack": "^5.72.0",
