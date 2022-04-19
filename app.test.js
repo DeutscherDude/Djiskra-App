@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const request = require('supertest');
-const app = require('./index');
+const app = require('./backend/index');
 
 describe('Todos API', () => {
     it('GET /todos --> array todos', () => {
