@@ -5,7 +5,10 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const port = process.env.PORT || 5000;
 var app = express();
+
+app.listen(port, () => { console.log(`Server is running on port: ${port}`) });
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -13,14 +16,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('/pokemons', function(req, res) {
+app.get('/api/pokemons', function(req, res) {
     var list = ['pikachu', 'charmander', 'bulbasaur'];
     res.json(list);
-    console.log("Sent list of items");
-})
-
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 })
 
 app.use('/', indexRouter);

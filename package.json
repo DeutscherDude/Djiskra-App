@@ -4,8 +4,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "start": "http-server",
-    "server": "nodemon index.js",
+    "start": "node backend/index.js",
+    "server": "nodemon backend/index.js",
     "test": "jest --watchAll --env=jsdom"
   },
   "jest": {
@@ -16,6 +16,7 @@
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.0",
     "express": "~4.16.1",
     "helmet": "^5.0.2",
     "morgan": "~1.9.1",

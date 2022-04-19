@@ -2,14 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const request = require('supertest');
-const MindMap = require('./src/Components/MindMap');
-const ToDos = require('./src/Components/Todos');
-const Home = require('./src/Components/Home');
-const create = require('@testing-library/react').render;
-const app = require('./app');
-
-// Restructure to test app.js setup
-
+const app = require('./index');
 
 describe('Todos API', () => {
     it('GET /todos --> array todos', () => {
