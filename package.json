@@ -2,12 +2,13 @@
   "name": "api-tdd",
   "version": "0.0.0",
   "private": true,
+  "main": "index.js",
   "scripts": {
     "start": "http-server",
+    "server": "nodemon index.js",
     "test": "jest --watchAll --env=jsdom"
   },
   "jest": {
-    "rootDir": "./src",
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
     }
@@ -41,6 +42,7 @@
     "http-server": "^14.1.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
     "supertest": "^6.2.2",
     "webpack": "^5.72.0",
     "webpack-cli": "^4.9.2",
