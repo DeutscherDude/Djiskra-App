@@ -1,9 +1,13 @@
+require('dotenv').config();
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const connectDb  = require('./config/db');
 var usersRouter = require('./routes/userRoutes');
 var { errorHandler } = require('./middleware/errorMiddleware');
+
+connectDb()
 
 const port = process.env.PORT || 5000;
 var app = express();
