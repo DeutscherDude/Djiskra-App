@@ -1,27 +1,43 @@
 const asyncHandler = require('express-async-handler');
 
+const User = require('../models/userModel');
 
-const getUser = asyncHandler(async (req, res) => {
-    if (!req.body) {
-        res.status(400).json({ message: "Request body missing, have you added all lookup variables?" });
-    }
-    res.status(200).json({ message: "respond with a user file" });
+const getUsers = asyncHandler(async (req, res) => {
+    const receivedUsers = await User.find();
+    res.status(200).json(receivedUsers);
 });
 
 const createUser = asyncHandler(async (req, res) => {
-    res.status(200).json({ message: "User has been created" });
+    const user = await User.create(req.body);
+    res.status(200).json(user);
 });
 
 const deleteUser = asyncHandler(async (req, res) => {
-    res.status(200).json({ message: "User has been deleted" });
+    const deletedUser = await User.findByIdAndDelete(req.params.id);
+
+    if (!deletedUser) {
+        res.status(400)
+        throw new Error('User not found');
+    }
+
+    res.status(200).json(deletedUser);
 });
 
 const updateUser = asyncHandler(async (req, res) => {
-    res.status(200).json({ message: "User has been updated" });
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+    })
+
+    if (!updatedUser) {
+        res.status(400);
+        throw new Error('User not found');
+    }
+
+    res.status(200).json(updatedUser);
 });
 
 module.exports = {
-    getUser,
+    getUsers,
     createUser,
     deleteUser,
     updateUser,
