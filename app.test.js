@@ -1,6 +1,3 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
 const request = require('supertest');
 const app = require('./backend/index');
 

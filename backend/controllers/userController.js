@@ -9,7 +9,7 @@ const getUsers = asyncHandler(async (req, res) => {
 
 const createUser = asyncHandler(async (req, res) => {
     const user = await User.create(req.body);
-    res.status(200).json(user);
+    res.status(201).json(user);
 });
 
 const deleteUser = asyncHandler(async (req, res) => {
