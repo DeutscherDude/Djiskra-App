@@ -1,5 +1,5 @@
 const request = require('supertest')
-const app = require('./backend/index')
+const app = require('../../index')
 
 describe('Projects API', () => {
     it('GET /projects -> json of projects', () => {
@@ -24,7 +24,7 @@ describe('Projects API', () => {
         }
     )
 
-    it ('POST /projects -> creates a project', () => {
+    it('POST /projects -> creates a project', () => {
         return request(app)
             .post('/projects')
             .send({
@@ -49,4 +49,52 @@ describe('Projects API', () => {
                 }))
             })
     })
+
+    it('PUT /projects/:id -> updates a project', () => {
+        return request(app)
+            .put('/projects/:id')
+            .send({
+                name: 'test',
+                category: 'test',
+                description: 'Updated test',
+                link: 'test',
+                image: 'test',
+                user: 'test',
+            })
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(res => {
+                expect(res.body).toEqual(expect.objectContaining({
+                    id: expect.any(Number),
+                    name: 'test',
+                    category: 'test',
+                    description: 'Updated test',
+                    link: 'test',
+                    image: 'test',
+                    user: 'test',
+                }))
+            })
+        })
+
+    it('DELETE /projects/:id -> deletes a project',() => {
+        return request(app)
+            .delete('/projects/:id')
+            .send({
+                id: 1,
+            })
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .then(res => {
+                expect(res.body).toEqual(expect.objectContaining({
+                    id: expect.any(Number),
+                    name: 'test',
+                    category: 'test',
+                    description: 'Updated test',
+                    link: 'test',
+                    image: 'test',
+                    user: 'test',
+                }))
+            })
+    })
+
 })
