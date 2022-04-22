@@ -1,6 +1,11 @@
 const request = require('supertest')
 const app = require('../../index')
 
+/**
+ * @jest-enviroment node
+ */
+
+
 describe('Projects API', () => {
     it('GET /projects -> json of projects', () => {
         return request(app)
