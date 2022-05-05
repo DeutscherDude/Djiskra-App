@@ -59,6 +59,26 @@ const deleteUser = asyncHandler(async (req, res) => {
     res.status(200).json(deletedUser);
 });
 
+
+const loginUser = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = await User.findOne({email});
+
+    if(user && (await bcrypt.compare(password, user.password))){
+        res.json({
+            _id: user.id,
+            name: user.name,
+            email: user.email,
+        })
+    }
+    else {
+        res.status(400)
+        throw new Error('Incorrect credentials')
+    }
+})
+
+
 const updateUser = asyncHandler(async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
@@ -77,4 +97,5 @@ module.exports = {
     createUser,
     deleteUser,
     updateUser,
+    loginUser
 }
