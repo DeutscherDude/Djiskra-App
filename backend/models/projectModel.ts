@@ -1,6 +1,6 @@
-const mongoos = require('mongoose')
+import { Schema, model } from 'mongoose';
 
-const projectSchema = new mongoos.Schema({
+const projectSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -22,7 +22,7 @@ const projectSchema = new mongoos.Schema({
         required: false
     },
     user: {
-        type: mongoos.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     }
@@ -30,4 +30,4 @@ const projectSchema = new mongoos.Schema({
     timestamps: true
 });
 
-module.exports = mongoos.model('Project', projectSchema);
+export default model('Project', projectSchema);

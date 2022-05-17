@@ -1,4 +1,4 @@
-const request = require('supertest')
+import { Request } from 'supertest';
 const app = require('../../index')
 
 /**
@@ -7,6 +7,8 @@ const app = require('../../index')
 
 
 describe('Projects API', () => {
+    let request: Request;
+
     it('GET /projects -> json of projects', () => {
         return request(app)
             .get('/projects')
