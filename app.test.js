@@ -1,6 +1,11 @@
 const request = require('supertest');
 const app = require('./backend/index');
 
+/**
+ * @jest-enviroment node
+ */
+
+
 describe('Todos API', () => {
     it('GET /todos --> array todos', () => {
         return request(app)

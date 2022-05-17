@@ -13,9 +13,11 @@ describe('Home unit tests', () => {
     }
     )
     it('renders the title', () => {
-        const home = render(<Home />);
+        const div = document.createElement('div');
+        ReactDOM.render(<Home />, div);
         const helmet = Helmet.peek()
         expect(helmet.title).toEqual('Home');
+        ReactDOM.unmountComponentAtNode(div);
     }
     )
 })

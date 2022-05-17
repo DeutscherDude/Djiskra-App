@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToDos from './../Todos';
+import Navbar from '../Navbar';
 import '@testing-library/jest-dom'
-import { render } from '@testing-library/react'
 
 
-describe('ToDos unit tests', () => {
+describe('Navbar unit tests', () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<ToDos />, div);
+        ReactDOM.render(<Navbar />, div);
         ReactDOM.unmountComponentAtNode(div);
     }
     )

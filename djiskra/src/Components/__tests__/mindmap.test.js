@@ -13,9 +13,11 @@ describe('MindMap unit tests', () => {
     }
     )
     it('renders the title', () => {
-        const MindM = render(<MindMap />);
+        const div = document.createElement('div');
+        ReactDOM.render(<MindMap />, div);
         const helmet = Helmet.peek();
         expect(helmet.title).toEqual('Mind Map');
+        ReactDOM.unmountComponentAtNode(div);
     }
     )
 })

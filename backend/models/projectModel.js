@@ -19,7 +19,7 @@ const projectSchema = new mongoos.Schema({
     },
     image: {
         type: String,
-        required: true
+        required: false
     },
     user: {
         type: mongoos.Schema.Types.ObjectId,

@@ -18,13 +18,11 @@ const createProject = asyncHandler(async (req, res) => {
     const createdProject = await Project.create(req.body);
 
 // To add a list of required params and search through it to improve readibility
+    const { name, category, description, link, image, id } = req.body;
 
-    if (!req.body.name || !req.body.category 
-        || !req.body.description || !req.body.link 
-        || !req.body.image || ! req.user.id){
-
-        req.statusCode(400);
-        throw new Error('Please fill out all fields')
+    if (!name || !category || !description || !link || !id){
+        req.statusCode(400).json('Please fill in all required fileds');
+        throw new Error('Please fill in all required fields')
     }
 
     res.status(201).json(createdProject);
