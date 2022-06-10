@@ -1,10 +1,10 @@
 import * as dotenv from 'dotenv';
-import express, {Express} from 'express';
+import express, { Express } from 'express';
 import cookieParser from 'cookie-parser';
 import connectDb from './config/db';
-import usersRouter from './routes/userRoutes';
-import projectsRouter from './routes/projectRoutes';
-import { errorHandler } from './middleware/errorMiddleware';
+import { userRouter } from './routes/userRoutes';
+import { projectRouter } from './routes/projectRoutes';
+import errorHandler from './middleware/errorMiddleware';
 
 dotenv.config();
 connectDb();
@@ -16,11 +16,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/api/users', usersRouter);
-app.use('/api/projects', projectsRouter);
+app.use('/api/users', userRouter);
+app.use('/api/projects', projectRouter);
 
 app.use(errorHandler);
 
 app.listen(port, () => { console.log(`Server is running on port: ${port}`) });
 
-module.exports = app;
+
+export default app;

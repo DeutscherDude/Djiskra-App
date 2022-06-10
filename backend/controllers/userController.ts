@@ -1,15 +1,16 @@
 import asyncHandler from 'express-async-handler';
 import User from '../models/userModel';
+import { Request, Response } from 'express';
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-export const getUsers = asyncHandler(async (req, res) => {
+export const getUsers = asyncHandler(async (req: Request, res: Response) => {
     const receivedUsers = await User.find();
     res.status(200).json(receivedUsers);
 });
 
-export const createUser = asyncHandler(async (req, res) => {
+export const createUser = asyncHandler(async (req: Request, res: Response) => {
     const { name, email, password, role } = req.body;
 
     if (!name || !email || !password || !role) {
@@ -48,7 +49,7 @@ export const createUser = asyncHandler(async (req, res) => {
     }
 });
 
-export const deleteUser = asyncHandler(async (req, res) => {
+export const deleteUser = asyncHandler(async (req: Request, res: Response) => {
     const deletedUser = await User.findByIdAndDelete(req.params.id);
 
     if (!deletedUser) {
@@ -60,7 +61,7 @@ export const deleteUser = asyncHandler(async (req, res) => {
 });
 
 
-export const loginUser = asyncHandler(async (req, res) => {
+export const loginUser = asyncHandler(async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({email});
@@ -79,7 +80,7 @@ export const loginUser = asyncHandler(async (req, res) => {
 })
 
 
-export const updateUser = asyncHandler(async (req, res) => {
+export const updateUser = asyncHandler(async (req: Request, res: Response) => {
     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
     })

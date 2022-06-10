@@ -6,4 +6,5 @@ const { getProjects, createProject, updateProject, deleteProject } = require('..
 router.route('/').get(getProjects).post(createProject);
 router.route('/:id').delete(deleteProject).put(updateProject);
 
-module.exports = router;
+
+export { router as projectRouter };
